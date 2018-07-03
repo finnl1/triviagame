@@ -1,67 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
 
-    <title>Trivia Game</title>
+<head> 
+  <meta charset="UTF-8">
+  <title>Trivia Game</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Bootstrap File -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="/Users/Jaymar/SMU_HW/week5/TriviaGame/assets/css/style.css"> -->
-    <link rel="stylesheet" href="./assets/css/style.css">
 
-    <link rel="icon" type="image/gif" href="./assets/images/IMG_3456.jpg"/>
 
-    <!-- Custom styles for this template -->
-<!--    <link href="jumbotron-narrow.css" rel="stylesheet">-->
+  <!-- JQuery -->
+  <script src="https://code.jquery.com/jquery.js"></script>
 
-  </head>
+</head>
 
-  <body>
+<body>
+
+  <!-- Overall Bootstrap Grid -->
+  <div class="container">
+
+    <!-- Jumbotron with Title -->
+    <div class="jumbotron">
+      <h1 class="text-center">
+        <strong>TRIVIA GAME</strong>
+      </h1>
+      <hr>
   
-    <audio controls loop>
-      <source src="./assets/images/tumblr_lq9mbjMc3g1qas0n5o1.mp3" type="audio/mp3"/>
-    </audio>
-   
-    <div class="container">
-      <div class="header text-center clearfix">
-        <h1 class="text-muted">Friends trivia game</h1>
-      </div>
-      <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-        <div id="game">
-          <h2>FRIENDS Trivia Game</h2>
-          <p id="remaining-time" class="lead">Remaining Time: <span id="timer"></span></p>
-          <p id="question" class="lead"></p>
-        </div>
-        <div id="results">
-        </div>
-      </div>
 
-      <div class="row">
-        <div id="choices" class="text-center">
-          <button id="start" class="btn btn-info btn-lg">Start Game</button>
-          <div id="options">
-            
+    </div>
+    <div class="row">
+
+      <div class="col-lg-6">
+
+        <!-- Controls (Superpower Grow/Shrink)-->
+        <div id="sizeControls" class="card">
+          <h4 class="card-header">Superpowers - Change Sizes!</h4>
+          <div class="card-body">
+            <div class="text-center">
+              <button class="btn btn-dark btn-lg normal-button">
+                <span class="fa fa-ok"></span> Normal</button>
+              <button class="btn btn-primary btn-lg grow-button">
+                <span class="fa fa-plus"></span> Grow</button>
+              <button class="btn btn-danger btn-lg shrink-button">
+                <span class="fa fa-minus"></span> Shrink</button>
+            </div>
           </div>
-          
+        </div>
+        <div id="fireControls" class="card">
+            <h4 class="card-header">Superpowers -Activate Fire!</h4>
+            <div class="card-body">
+              <div class="text-center">
+                <button class="btn btn-dark btn-lg normal-button">
+                  <span class="fa fa-ok"></span> Normal</button>
+                <button class="btn btn-primary btn-lg fireon-button">
+                  <span class="fa fa-plus"></span> Fire on</button>
+                <button class="btn btn-danger btn-lg fireoff-button">
+                  <span class="fa fa-minus"></span> Fire off</button>
+              </div>
+            </div>
+          </div>
+        <!-- Controls (Superpower Visibility) -->
+        <div id="visibilityControls" class="card">
+          <h4 class="card-header">Superpowers - Invisiblity!</h4>
+          <div class="card-body">
+            <div class="text-center">
+              <button class="btn btn-dark btn-lg vis-button">
+                <span class="fa fa-eye"></span> Visible</button>
+              <button class="btn btn-info btn-lg invis-button">
+                <span class="fa fa-eye-slash"></span> Invisible</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls (Stretch) -->
+        <div id="stretchControls" class="card">
+          <h4 class="card-header">Superpowers - Stretch!</h4>
+          <div class="card-body">
+            <div class="text-center">
+              <button class="btn btn-dark btn-lg unstretch-btn">
+                <span class="fa fa-compress"></span> Normal</button>
+              <button class="btn btn-primary btn-lg stretch-btn">
+                <span class="fa fa-expand"></span> Stretch</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls (Superpower Move Controls) -->
+        <div id="moveControls" class="card">
+          <h4 class="card-header">Move Controls</h4>
+          <div class="card-body">
+            <div class="text-center mb-1">
+              <button class="btn btn-dark btn-lg fa fa-arrow-up up-button">Up</button>
+            </div>
+            <div class="text-center">
+              <button class="btn btn-dark btn-lg fa fa-arrow-left left-button">Left</button>
+              <button class="btn btn-dark btn-lg fa fa-arrow-down down-button">Down</button>
+              <button class="btn btn-dark btn-lg fa fa-arrow-right right-button">Right</button>
+            </div>
+            <br>
+            <div class="text-center">
+              <button class="btn btn-dark btn-lg back-button">
+                <span class="fa fa-comment"></span> Go Planet!</button>
+            </div>
+          </div>
         </div>
       </div>
 
-    </div> <!-- /container -->
+      <!-- Right Panel (Captain Planet Hero)-->
+      <div class="col-lg-6">
 
-    <!-- jQuery CDN-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- Bootstrap CDN -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <!-- TRIVIA APP JS -->
-    <script src="./assets/js/app.js"></script>  
+        <! -- Captain Planet Image -->
+        <! -- Fire Image -- >
+        <img src="https://vignette.wikia.nocookie.net/mario/images/f/fa/494px-Fireball_Artwork_-_Super_Mario_3D_World.png/revision/latest?cb=20131129222802" alt = "" class="img fire" style="position:absolute; opacity: 0; top:50px; left: 80px; z-index: -10; height: 100px">
+    <img src="https://vignette.wikia.nocookie.net/captainplanet/images/d/d4/Captain-planet2_8052.jpg/revision/latest?cb=20171013161420&format=original" alt="" class="img captain-planet" style="position:absolute; ; top:50px; left: 80px; z-index: -20; height: 300px">
+      </div>
+    </div>
+  </div>
 
+ 
+  <script>
 
-  </body>
+  // JavaScript function that wraps everything
+  $(document).ready(function() {
+
+    var captainPlanet = $(".captain-planet");
+    var fire = $(".fire");
+
+    // Gets Link for Theme Song
+    var audioElement = document.createElement("audio");
+    audioElement.setAttribute("src", "Assets/captainplanet24.mp3");
+
+    // Theme Button
+    $(".theme-button").on("click", function() {
+      audioElement.play();
+    });
+    $(".pause-button").on("click", function() {
+      audioElement.pause();
+    });
+
+    // Size Buttons
+    $(".normal-button").on("click", function() {
+      captainPlanet.animate({ height: "300px" });
+    });
+    $(".grow-button").on("click", function() {
+      captainPlanet.animate({ height: "500px" });
+    });
+    $(".shrink-button").on("click", function() {
+      captainPlanet.animate({ height: "100px" });
+    });
+
+    // Visibility Buttons
+    $(".vis-button").on("click", function() {
+      captainPlanet.animate({ opacity: "1" });
+    });
+    $(".invis-button").on("click", function() {
+      captainPlanet.animate({ opacity: "0.05" });
+    });
+$(".fireoff-button")
+//fire buttons
+$(".fireon-button").on("click", function() {
+fire.animate({opacity: "1"}); 
+});
+$(".fireoff-button").on("click", function() {
+fire.animate({opacity: "0"});
+});
+
+    // Move Buttons 
+    $(".up-button").on("click", function() {
+      captainPlanet.animate({ top: "-=200px" }, "normal");
+    });
+    $(".down-button").on("click", function() {
+      captainPlanet.animate({ top: "+=200px" }, "normal");
+    });
+    $(".left-button").on("click", function() {
+      captainPlanet.animate({ left: "-=200px" }, "normal");
+    });
+    $(".right-button").on("click", function() {
+      captainPlanet.animate({ left: "+=200px" }, "normal");
+    });
+    $(".back-button").on("click", function() {
+      captainPlanet.animate({ top: "50px", left: "80px" }, "fast");
+    });
+
+    // Keyboard move controls
+    $(document).keyup(function(e) {
+      switch (e.which) {
+
+      // Move Buttons (Keyboard Down)
+      case 40:
+        captainPlanet.animate({ top: "+=200px" }, "normal");
+        break;
+
+        // Move Buttons (Keyboard Right)
+      case 39:
+        captainPlanet.animate({ left: "+=200px" }, "normal");
+        break;
+
+        // Move Buttons (Keyboard Up)
+      case 38:
+        captainPlanet.animate({ top: "-=200px" }, "normal");
+        break;
+
+        // Move Buttons (Keyboard Left)
+      case 37:
+        captainPlanet.animate({ left: "-=200px" }, "normal");
+        break;
+
+      default:
+        break;
+      }
+    });
+  });
+
+  </script>
+
+</body>
 </html>
